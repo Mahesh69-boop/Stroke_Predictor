@@ -1,0 +1,10 @@
+#dv{
+    height: 2100px;
+    width: 100%;
+    gap: 1rem;
+}
+#Input{
+    height: 40px;
+    margin: 40px;
+    padding: 5px;
+}
