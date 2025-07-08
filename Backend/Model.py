@@ -43,9 +43,3 @@ print(f"Classification Accuracy: {accuracy}")
 joblib.dump(reg_model, "regression_model.pkl")
 joblib.dump(clf_model, "classification_model.pkl")
 
-# Optional: Zip them for backend use
-with zipfile.ZipFile("regression_model.pkl.zip", "w") as zipf:
-    zipf.write("regression_model.pkl")
-
-with zipfile.ZipFile("classification_model.pkl.zip", "w") as zipf:
-    zipf.write("classification_model.pkl")

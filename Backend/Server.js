@@ -3,17 +3,41 @@ const cors = require("cors");
 const bodyParser = require('body-parser');
 const { spawn } = require("child_process");
 const path= require("path");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
+const authRoutes = require("./routes/auth");
+const Newuser = require("./routes/NewUser");
+const User = require("./routes/User");
+const history = require("./routes/FetchHistory");
+const saveprediction = require("./routes/SavePrediction");
+dotenv.config(); // Load .env variables
 
 const app = express();
 
 
 // Enable CORS for the frontend to access the backend
-app.use(cors());
-// Handle OPTIONS preflight requests
-
-
+app.use(cors({
+  origin: "http://localhost:5173", 
+  credentials: true
+}
+));
 // Middleware to parse incoming JSON data
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use("/api/auth", authRoutes);
+app.use("/api/NewUser", Newuser);
+app.use("/api/User", User);
+app.use("/api/history", history);
+app.use("/api/save",saveprediction);
+
+
+//  Connect to MongoDB Atlas
+mongoose.connect(process.env.MONGO_URI)
+
+.then(() => console.log(" Connected to MongoDB"))
+.catch(err => console.error(" MongoDB connection error:", err));
+
 
 app.get('/', (req, res) => {
   res.json({ message: "Server is running" });
