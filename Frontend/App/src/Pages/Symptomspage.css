@@ -1,10 +1,53 @@
-#dv{
-    height: 2100px;
-    width: 100%;
-    gap: 1rem;
-}
-#Input{
+/* Container */
+#dv {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: #e9f7ec; /* Light green background */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Heading */
+  #dv h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #2e7d32;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  /* Age input */
+  #Input {
     height: 40px;
-    margin: 40px;
-    padding: 5px;
-}
+    width: 60%;
+    margin: 10px auto 30px auto;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #221a1a;
+    font-size: 16px;
+    display: block;
+  }
+  
+  /* Submit button */
+  button {
+    width: fit-content;
+    padding: 10px 24px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 20px;
+    background-color: #43a047;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #388e3c;
+  }
+  

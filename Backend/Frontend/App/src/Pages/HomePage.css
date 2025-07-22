@@ -1,0 +1,12 @@
+#Hom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    background-color: rgb(86, 164, 232);
+    border: 1px solid black;
+    border-radius: 50px;
+    color: black;
+}

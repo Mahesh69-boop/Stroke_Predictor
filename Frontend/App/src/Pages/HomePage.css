@@ -1,12 +1,25 @@
-#Hom{
+#Hom {
+    height: 100vh; /* Full viewport height */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-button{
+    justify-content: center; /* Vertically center */
+    align-items: center;     /* Horizontally center */
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  #Hom button {
     background-color: rgb(86, 164, 232);
     border: 1px solid black;
     border-radius: 50px;
     color: black;
-}
+    padding: 0.75rem 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: rgb(66, 144, 212);
+  }
+  

@@ -1,8 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import Symptoms from "../Components/Symptoms";
 import React, { useState } from "react";
-import axios from "axios";
+import useAxios from "../assets/AxiosInterceptor";
 import "./Symptomspage.css";
+import { useAuth } from "../context/AuthContext";
+
 
 function Symptomspage() {
     const navigate = useNavigate();
@@ -24,7 +26,9 @@ function Symptomspage() {
         anxiety: 0,
         Age:0
       });
-
+      const { user, token } = useAuth();
+      const axios = useAxios(); 
+      const URL = import.meta.env.VITE_API_BASE_URL;
       const handleCheckboxChange = (symptom) => {
         setSymptomsState((prevState) => ({
           ...prevState,
@@ -33,20 +37,29 @@ function Symptomspage() {
       };
       const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent page reload
-    
         try {
-          const response = await axios.post("http://localhost:5001/predict", JSON.stringify(symptomsState),
+          const response = await axios.post(`${URL}/predict`, JSON.stringify(symptomsState),
         {
           headers:{
             "Content-Type" : "application/json"
           }
         });
-          console.log(JSON.stringify(response.data));
-          // Store result in localStorage or state (to pass to Dashboard)
-          localStorage.setItem("prediction", JSON.stringify(response.data));
+
+        const PredictionRes = response.data;
+        console.log({
+          userId: user?.email,
+          inputData: symptomsState,
+          result: PredictionRes,
+        })
+        await axios.post("/api/save",{
+          userId: user?.email,
+          inputData: symptomsState,
+          result: PredictionRes,
+        })
+          
     
           // Navigate to the dashboard
-          navigate("/dashboard");
+          navigate("/dashboard",{state:{PredictionRes}});
         } catch (error) {
           console.error("Error:", error);
         }

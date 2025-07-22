@@ -1,0 +1,6 @@
+{
+    "watch": ["server.js", "routes", "controllers", "models"], 
+    "ignore": ["venv", "node_modules", "__pycache__"],
+    "ext": "js,json"
+  }
+  

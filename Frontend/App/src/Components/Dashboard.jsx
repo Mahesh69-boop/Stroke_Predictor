@@ -15,7 +15,7 @@ const Dashboard = ({ risk,chance}) => {
       <div className={`risk-box ${riskClass}`}> 
        <p>Risk of getting an heart Stroke:{chance===1 ? "High" : "Low"}</p>
       </div>
-      <button onClick={() => navigate('/')}>Go Back</button>
+      <button onClick={() => navigate('/history')}>Go Back</button>
     </div>
   );
 };

@@ -1,0 +1,82 @@
+/* login.css */
+
+* {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #f0f4f8, #d9e2ec);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #loginbox {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+  }
+  
+  #loginbox h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  #loginbox form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #loginbox input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.2s ease;
+  }
+  
+  #loginbox input:focus {
+    outline: none;
+    border-color: #3f87f5;
+    box-shadow: 0 0 5px rgba(63, 135, 245, 0.2);
+  }
+  
+  #loginbox button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #3f87f5;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #loginbox button:hover {
+    background-color: #346dd3;
+  }
+  
+  @media (max-width: 400px) {
+    #loginbox {
+      width: 90%;
+      padding: 30px 20px;
+    }
+  }
+  
