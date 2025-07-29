@@ -12,13 +12,13 @@ const User = require("./routes/User");
 const history = require("./routes/FetchHistory");
 const saveprediction = require("./routes/SavePrediction");
 dotenv.config(); // Load .env variables
-
 const app = express();
 
 
 // Enable CORS for the frontend to access the backend
 const allowedOrigins = [
-  "http://localhost:5173",          
+  "http://localhost:5173", 
+  "http://localhost:5001",         
   "https://strokepredictor.org",   
   "https://www.strokepredictor.org" 
 ];
@@ -38,6 +38,8 @@ app.use(cors({
   credentials: true
 }
 ));
+app.use(express.static(path.join(__dirname, '../Frontend/App/dist')));
+
 // Middleware to parse incoming JSON data
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -46,6 +48,7 @@ app.use("/api/NewUser", Newuser);
 app.use("/api/User", User);
 app.use("/api/history", history);
 app.use("/api/save",saveprediction);
+
 
 
 //  Connect to MongoDB Atlas
@@ -58,6 +61,8 @@ mongoose.connect(process.env.MONGO_URI)
 app.get('/', (req, res) => {
   res.json({ message: "Server is running" });
 });
+
+
 
 // Define a route for handling predictions
 app.post('/predict', (req, res) => {
@@ -89,11 +94,17 @@ app.post('/predict', (req, res) => {
     });
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../Frontend/App/dist/index.html'));
+});
 
 // Start the server
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+
+
 
 

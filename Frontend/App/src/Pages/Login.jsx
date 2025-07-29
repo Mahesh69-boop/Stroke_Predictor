@@ -13,6 +13,8 @@ export default function Login() {
     e.preventDefault();
     const baseURL = import.meta.env.VITE_API_BASE_URL;
     console.log(baseURL);
+    console.log(import.meta.env);
+
 
 
     try {
